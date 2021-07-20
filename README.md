@@ -8,7 +8,6 @@
   
   * [Installation](#installation)
   * [Usage](#usage)
-  * [Contributing](#contributing)
   * [Questions](#questions)
   * [Walkthrough](#walkthrough-video)
   
