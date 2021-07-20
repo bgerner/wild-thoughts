@@ -102,12 +102,13 @@ const thoughtController = {
       { new: true }
     )
       .then((dbThoughtData) => {
-        res.json(dbThoughtData)
+        if (!dbThoughtData) {
+          res.status(404).json({ message: "No thought found with this id" });
+          return;
+        }
+        res.json(dbThoughtData);
       })
-      .catch((err) => {
-        console.log(err)
-        res.json(err)
-      });
+      .catch((err) => res.status(400).json(err));
   }
 };
 
