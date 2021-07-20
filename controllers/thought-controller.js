@@ -45,9 +45,8 @@ const thoughtController = {
       })
       .catch((err) => res.json(err));
   },
-  // <-------------------------*------------------------->
   updateThought({ params, body }, res) {
-    Thought.findOneAndUpdate({ _id: params.uthoughtId }, body, {
+    Thought.findOneAndUpdate({ _id: params.thoughtId }, body, {
       new: true,
       runValidators: true,
     })
@@ -60,7 +59,6 @@ const thoughtController = {
       })
       .catch((err) => res.status(400).json(err));
   },
-  // <-------------------------*------------------------->
   removeThought({ params }, res) {
     Thought.findOneAndDelete({ _id: params.thoughtId })
       .then((deletedThought) => {
@@ -103,8 +101,14 @@ const thoughtController = {
       { $pull: { reactions: { reactionId: params.reactionId } } },
       { new: true }
     )
-      .then((dbThoughtData) => res.json(dbThoughtData))
-      .catch((err) => res.json(err));
-  },
+      .then((dbThoughtData) => {
+        res.json(dbThoughtData)
+      })
+      .catch((err) => {
+        console.log(err)
+        res.json(err)
+      });
+  }
 };
+
 module.exports = thoughtController;

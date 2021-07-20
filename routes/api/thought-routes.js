@@ -14,12 +14,17 @@ router
     .post(addThought)
 
 router
-    .route('/:userId/:thoughtId')
+    .route('/:thoughtId/reactions')
     .put(addReaction)
+
+router
+    .route('/:userId/:thoughtId')
+    .put(updateThought)
     .delete(removeThought)
 
 router
-    .route('/:userId/:thoughtId/:reactionId')
-    .delete(removeReaction);
+    .route('/:thoughtId/reactions/:reactionId')
+    .delete(removeReaction)
+
 
 module.exports = router;
